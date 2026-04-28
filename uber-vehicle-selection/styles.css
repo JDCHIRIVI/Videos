@@ -1,0 +1,290 @@
+:root {
+  --font-primary: "Uber Move Text", "Uber Move", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F6F6F6;
+  --color-bg-selected: #EFF3FE;
+  --color-text-primary: #000000;
+  --color-text-secondary: #545454;
+  --color-text-selected: #276EF1;
+  --color-border-transparent: rgba(0, 0, 0, 0.08);
+  --color-border-opaque: #E2E2E2;
+  --shadow-200: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-sheet: 0 -4px 20px rgba(0, 0, 0, 0.12);
+  --radius-200: 4px;
+  --radius-300: 8px;
+  --radius-400: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: #e6eef6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--color-text-primary);
+}
+
+.device-frame {
+  width: 375px;
+  height: 812px;
+  background-color: var(--color-white);
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Map Area */
+.map-container {
+  flex: 1;
+  position: relative;
+  background-image: url('file:///C:/Users/Asus Zenbook/.gemini/antigravity/brain/26fab698-7dd2-4e0f-b324-57f21bff6470/uber_map_background_1777399587315.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Status bar mock */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.status-bar .icons {
+  display: flex;
+  gap: 6px;
+}
+
+.back-btn {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-200);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.back-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.target-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-200);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Tooltip on map */
+.map-tooltip {
+  position: absolute;
+  top: 140px;
+  left: 40px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-200);
+  border-radius: var(--radius-200);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 10;
+}
+.map-tooltip .time {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+.map-tooltip .time span {
+  display: block;
+  font-size: 10px;
+  opacity: 0.8;
+}
+.map-tooltip .address {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bottom Sheet */
+.bottom-sheet {
+  background-color: var(--color-white);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: var(--shadow-sheet);
+  position: relative;
+  z-index: 20;
+  margin-top: -20px;
+  padding-bottom: 34px; /* for home indicator */
+}
+
+/* Tabs */
+.tabs-container {
+  padding: 16px 0 8px;
+  text-align: center;
+}
+.tabs-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  margin-bottom: 4px;
+}
+.tab {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  position: relative;
+}
+.tab.active {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+.tab-subtitle {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+/* Ride Options List */
+.ride-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ride-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.ride-item.selected {
+  background-color: var(--color-bg-selected);
+  border-color: rgba(39, 110, 241, 0.1);
+}
+
+.ride-icon {
+  width: 60px;
+  height: 40px;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ride-icon img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.ride-info {
+  flex: 1;
+}
+.ride-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.ride-time {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.ride-price-container {
+  text-align: right;
+}
+.ride-price {
+  font-size: 18px;
+  font-weight: 600;
+}
+.ride-item.selected .ride-price {
+  color: var(--color-text-selected);
+}
+.ride-capacity {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  gap: 4px;
+}
+.ride-capacity svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Confirm Button */
+.confirm-section {
+  padding: 16px 24px;
+}
+.btn-confirm {
+  width: 100%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-200);
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+.btn-confirm:hover {
+  opacity: 0.9;
+}
+
+/* Home Indicator */
+.home-indicator {
+  width: 134px;
+  height: 5px;
+  background-color: var(--color-black);
+  border-radius: 100px;
+  margin: 0 auto;
+  margin-top: 8px;
+}
